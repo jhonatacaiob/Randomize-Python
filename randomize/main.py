@@ -35,4 +35,4 @@ async def randomize(ctx):
 
 
 
-bot.run(config('TOKEN'))
+bot.run(config('DISCORD_TOKEN'))
