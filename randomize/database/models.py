@@ -1,12 +1,10 @@
 from peewee import *
 from decouple import config
-from playhouse.dataset import DataSet
+from playhouse.db_url import connect
 
 
 
-
-db = PostgresqlDatabase('member_guild', user=config('USER'), password=config('PASS'),
-                           host=config('HOST'), port=config('PORT'))
+db = connect(config('DATABASE_URL'))
 
 class MemberGuild(Model):
     user_id = BigIntegerField()
@@ -14,7 +12,6 @@ class MemberGuild(Model):
     name = CharField()
     nick = CharField(null = True)
     guild_name = CharField()
-    
     
     class Meta:
         database = db
